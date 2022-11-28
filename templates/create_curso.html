@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>Registrar</title>
+    <link href="{{ url_for('static', path='/css/bootstrap.css') }}" rel="stylesheet">
+</head>
+<body>
+<div class="container w-50">
+<div class="card text-left" style="width: 32rem;text-align:center;">
+    <div class="card-body">
+      <div class="card-header">
+        <h1> Registrar Nuevo Curso </h1>
+      </div>
+        <form action="/create_curso/" method="POST" enctype="application/x-www-form-urlencoded">
+                <div class="mb-3">
+                      <label for="nombre" class="form-label">Nombre</label>
+                      <input type="text" class="form-control"   id="nombre" name="nombre" placeholder="Ingrese el Nombre">
+                </div>
+                 <div class="mb-3">
+                      <label for="profesor" class="form-label">Profesor</label>
+                      <input type="text" class="form-control" id="profesor"  name="profesor" placeholder="Ingrese el Profesor">
+                </div>
+                 <div class="mb-3">
+                    <label for="creditos" class="form-label">Creditos</label>
+                    <input type="text" class="form-control" id="creditos"  name="creditos" placeholder="Ingrese los creditos (SOLO NUMEROS)">
+                </div>
+                <div class="mb-3">
+                    <label for="ciclo" class="form-label">Ciclo</label>
+                    <input type="text" class="form-control" id="ciclo"  name="ciclo" placeholder="Ingrese el ciclo (SOLO NUMEROS)">
+                </div>
+                <input type="submit" class="btn btn-primary" value="Registrar"> &nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="btn btn-danger" href="javascript:history.back()">Atrás</a>
+           </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

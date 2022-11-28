@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>Listado</title>
+    <link
+      href="{{ url_for('static', path='/css/bootstrap.css') }}"
+      rel="stylesheet"
+    />
+    <script src="static/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <form>
+      <div class="container w-50">
+        <h1>Lista de Cursos</h1>
+
+        <table class="table table-hover table-sm">
+          <thead>
+            <td>Id</td>
+            <td>Nombre</td>
+            <td>Profesor</td>
+            <td>Creditos</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </thead>
+          {% for curso in curso_list %}
+          <tr>
+            <td>
+              <a href="/curso/{{curso.id}}">{{curso.id}}</a>
+            </td>
+            <td>{{curso.nombre}}</td>
+            <td>
+              {{curso.profesor}}
+            </td>
+            <td>{{curso.creditos}}</td>
+            <td>
+              <a class="btn btn-warning" href="/curso/update/{{curso.id}}"
+                >Actualizar</a
+              >
+            </td>
+            <td>
+              <a
+                class="btn btn-danger"
+                href="/curso/delete/{{curso.id}}"
+                >Eliminar</a
+              >
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+        <a class="btn btn-success" href="/create_curso_ui"
+          >Registrar Nuevo Curso</a
+        > &nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href="/asignar_curso_ui"
+        >Asignar Curso</a
+      > &nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href="javascript:history.back()">Atrás</a>
+      </div>
+    </form>
+  </body>
+</html>

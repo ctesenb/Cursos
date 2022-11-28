@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <title>Asignar</title>
+    <link
+      href="{{ url_for('static', path='/css/bootstrap.css') }}"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container w-50">
+      <div class="card text-left" style="width: 32rem; text-align: center">
+        <div class="card-body">
+          <div class="card-header">
+            <h1>Asignar Curso al Alumno</h1>
+          </div>
+          <form method="post" action="/asignar_curso">
+            <div class="mb-3">
+              <label for="id_curso" class="form-label">Curso</label>
+              <input
+                type="text"
+                class="form-control"
+                id="id_curso"
+                name="id_curso"
+                placeholder="Ingrese el ID del curso"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="id_alumno" class="form-label">Alumno</label>
+              <input
+                type="text"
+                class="form-control"
+                id="id_alumno"
+                name="id_alumno"
+                placeholder="Ingrese el ID del alumno"
+              />
+            </div>
+            <input type="submit" class="btn btn-primary" value="Asignar" />
+            &nbsp;&nbsp;&nbsp;&nbsp;<a
+              class="btn btn-danger"
+              href="javascript:history.back()"
+              >Atrás</a
+            >
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

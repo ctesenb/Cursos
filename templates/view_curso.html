@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>Detalle</title>
+    <link
+      href="{{ url_for('static', path='/css/bootstrap.css') }}"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container w-50">
+      <h1>{{ curso.nombre }}:</h1>
+      <hr width="55%" />
+      <div class="card" style="width: 28rem">
+        <h5 class="card-title">{{curso.profesor}}</h5>
+        <div class="card-body">
+          <h5 class="card-title">{{curso.creditos}}</h5>
+          <hr/>
+          <p class="card-text">Curso de {{curso.ciclo}} ciclo.</p>
+          <p class="card-text">IDs de Alumnos Asignados: {{curso.alumnos}}</p>
+        </div>
+      </div>
+      <a class="btn btn-danger" href="javascript:history.back()">Atrás</a>
+    </div>
+  </body>
+</html>
