@@ -3,7 +3,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi import FastAPI
 from fastapi import Request, Depends, Request, Form
-from config.db import SessionLocal, engine, SessionSubLocal
+from config.db import SessionLocal, engine
 import model.curso_model
 from sqlalchemy.orm import Session
 from model.curso_model import CursoM
@@ -15,13 +15,6 @@ app = FastAPI()
 def get_database_session():
     try:
         db = SessionLocal()
-        yield db
-    finally:
-        db.close()
-
-def get_database_sub_session():
-    try:
-        db = SessionSubLocal()
         yield db
     finally:
         db.close()
@@ -59,23 +52,23 @@ async def asignar_curso_ui(request: Request):
     return templates.TemplateResponse("asignar_curso.html", {"request": request})
 
 @app.post("/asignar_curso", response_class=HTMLResponse)
-def asignar_curso(id_curso: int = Form(...), id_alumno: int = Form(...), db: Session = Depends(get_database_session) , db_sub: Session = Depends(get_database_sub_session)):
+def asignar_curso(id_curso: int = Form(...), id_alumno: int = Form(...), db: Session = Depends(get_database_session)):
     curso = db.query(CursoM).filter(CursoM.id == id_curso).first()
     update = ''
     if curso.alumnos is None:
         update =  str(id_alumno)
     else:
-        update = curso.alumnos + "|" + str(id_alumno)
-    db.execute("UPDATE Cursos SET alumnos = "+ str(update) + " WHERE id = "+ str(id_curso))
+        update = "'"+curso.alumnos + "|" + str(id_alumno)+"'"
+    db.query(CursoM).filter(CursoM.id == id_curso).update({CursoM.alumnos: update})
     db.commit()
     cursos = 0;
-    asignacion = db_sub.execute("SELECT cursos FROM Alumnos WHERE id = " + str(id_alumno)).fetchone()
+    asignacion = db.execute("SELECT a.cursos FROM Alumnos.Alumnos a WHERE id = " + str(id_alumno)).fetchone()
     if asignacion[0] is None:
         cursos = 1
     else:
         cursos = asignacion[0] +1
-    db_sub.execute("UPDATE Alumnos SET cursos ="+str(cursos)+ " WHERE id = "+str(id_alumno))
-    db_sub.commit()
+    db.execute("UPDATE Alumnos.Alumnos a SET a.cursos = "+str(cursos)+ " WHERE id = "+str(id_alumno))
+    db.commit()
     return RedirectResponse(url="/curso", status_code=303)
 
 @app.get("/curso/delete/{id}", response_class=HTMLResponse)
