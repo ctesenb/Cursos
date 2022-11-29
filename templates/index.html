@@ -1,22 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Cursos DB</title>
-    <link href="{{ url_for('static', path='/css/bootstrap.css') }}" rel="stylesheet">
-    <script src="static/js/bootstrap.min.js"></script>
-  </head>
 
-  <body>
-    <div class="container w-50">
-      <h1>Cursos de la Ricardo Palma</h1>
-      <hr class="text-primary" />
-      <p>
-        Bievenido, pagina de los cursos de la Universidad Ricardo Palma.
-        Seleccione <a href="/curso">aqui</a> para ver el
-        listado de cursos.
-      </p>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <title>Cursos DB</title>
+  <link href="{{ url_for('static', path='/css/bootstrap.css') }}" rel="stylesheet">
+  <script src="static/js/bootstrap.min.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<style>
+  body {
+    min-height: 100vh;
+  }
+
+  body.home {
+    display: flex;
+    align-items: center;
+    background-image: url(https://arquitecturapanamericana.com/wp-content/gallery/AULARIO-EN-EL-CAMPUS-DE-LA-UNIVERSIDAD-RICARDO-PALMA%2C-SURCO/AULARIO-EN-EL-CAMPUS-DE-LA-UNIVERSIDAD-R.-P.-001.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: brightness(0.4);
+  }
+
+  .icon {
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    box-shadow: 1px -5px 20px 0px rgb(0 0 0 / 21%);
+    display: grid;
+    place-content: center;
+    border-radius: 50%;
+  }
+
+  .icon svg {
+    width: 36px;
+  }
+
+  .cont-enlaces {
+    display: flex;
+    justify-content: center;
+    gap: 45px;
+    margin-top: 70px;
+    flex-wrap: wrap;
+  }
+
+  .cont-enlaces a {
+    padding: 85px 40px;
+    position: relative;
+    box-shadow: 1px -5px 20px 0px rgb(0 0 0 / 21%);
+    border-radius: 15px;
+    background: rgb(255 255 255);
+    text-decoration: none;
+    transition: .4s ease all;
+    text-align: center;
+  }
+  .cont-enlaces a:hover{
+    transform: translateY(-15px);
+  }
+  .enlace-texto h4{
+    text-align: center;
+  }
+
+</style>
+
+<body class="home">
+
+  <div class="container w-50">
+    <h1 style="text-align: center; color: #fff;">Cursos de la Ricardo Palma</h1>
+    <div class="cont-enlaces">
+      <a href="/curso" data-aos="fade-up">
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48">
+            <path fill="none" d="M0 0h24v24H0z"></path>
+            <path
+              d="M21 18H6a1 1 0 0 0 0 2h15v2H6a3 3 0 0 1-3-3V4a2 2 0 0 1 2-2h16v16zM5 16.05c.162-.033.329-.05.5-.05H19V4H5v12.05zM16 9H8V7h8v2z"
+              fill="rgba(117,117,117,1)"></path>
+          </svg>
+        </div>
+        <div class="enlace-texto">
+          <h4>Cursos de la Ricardo Palma<br><strong>Ver el
+            listado de cursos.</strong></h4>
+        </div>
+      </a>
     </div>
-  </body>
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+
 </html>

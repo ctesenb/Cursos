@@ -1,0 +1,17 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card{
+    width: 32rem;
+    text-align: center;
+    padding: 35px 25px;
+    margin: auto;
+    box-shadow: 4px 2px 20px rgb(0 0 0 / 39%);
+    border-radius: 15px;
+}
+.card form{
+    text-align: left;
+}

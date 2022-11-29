@@ -2,10 +2,11 @@
 <head>
     <title>Registrar</title>
     <link href="{{ url_for('static', path='/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='/css/estilos.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="body--form">
 <div class="container w-50">
-<div class="card text-left" style="width: 32rem;text-align:center;">
+<div class="card text-left" style="width: 32rem;margin: auto;">
     <div class="card-body">
       <div class="card-header">
         <h1> Registrar Nuevo Curso </h1>
@@ -28,7 +29,7 @@
                     <input type="text" class="form-control" id="ciclo"  name="ciclo" placeholder="Ingrese el ciclo (SOLO NUMEROS)">
                 </div>
                 <input type="submit" class="btn btn-primary" value="Registrar"> &nbsp;&nbsp;&nbsp;&nbsp;
-                <a class="btn btn-danger" href="javascript:history.back()">Atrás</a>
+                <a class="btn btn-danger" href="/curso">Atrás</a>
            </form>
         </div>
     </div>

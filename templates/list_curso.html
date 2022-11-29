@@ -1,57 +1,99 @@
 <html>
-  <head>
-    <title>Listado</title>
-    <link
-      href="{{ url_for('static', path='/css/bootstrap.css') }}"
-      rel="stylesheet"
-    />
-    <script src="static/js/bootstrap.min.js"></script>
-  </head>
-  <body>
-    <form>
-      <div class="container w-50">
-        <h1>Lista de Cursos</h1>
 
-        <table class="table table-hover table-sm">
-          <thead>
-            <td>Id</td>
-            <td>Nombre</td>
-            <td>Profesor</td>
-            <td>Creditos</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-          </thead>
-          {% for curso in curso_list %}
-          <tr>
-            <td>
-              <a href="/curso/{{curso.id}}">{{curso.id}}</a>
-            </td>
-            <td>{{curso.nombre}}</td>
-            <td>
-              {{curso.profesor}}
-            </td>
-            <td>{{curso.creditos}}</td>
-            <td>
-              <a class="btn btn-warning" href="/curso/update/{{curso.id}}"
-                >Actualizar</a
-              >
-            </td>
-            <td>
-              <a
-                class="btn btn-danger"
-                href="/curso/delete/{{curso.id}}"
-                >Eliminar</a
-              >
-            </td>
-          </tr>
-          {% endfor %}
-        </table>
-        <a class="btn btn-success" href="/create_curso_ui"
-          >Registrar Nuevo Curso</a
-        > &nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-primary" href="/asignar_curso_ui"
-        >Asignar Curso</a
-      > &nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-danger" href="javascript:history.back()">Atrás</a>
+<head>
+  <title>Listado</title>
+  <link href="{{ url_for('static', path='/css/bootstrap.css') }}" rel="stylesheet" />
+  <script src="static/js/bootstrap.min.js"></script>
+  <link href="{{ url_for('static', path='/css/estilos.css') }}" rel="stylesheet" />
+</head>
+
+<style>
+  .cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .enlaces--cabecera {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 20px;
+  }
+
+  .table>thead>tr>th,
+  .table>tbody>tr>th,
+  .table>tfoot>tr>th,
+  .table>thead>tr>td,
+  .table>tbody>tr>td,
+  .table>tfoot>tr>td {
+    vertical-align: middle;
+  }
+
+</style>
+
+<body>
+  <form>
+
+    <div class="cabecera">
+      <h1>Lista de Cursos</h1>
+      <div class="enlaces--cabecera">
+        <a class="" href="/create_curso_ui">Registrar Nuevo Curso</a>
+        <a class="" href="/asignar_curso_ui">Asignar Curso</a>
+        <a class="" href="/">Atrás <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+            width="24" height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path
+              d="M5.828 7l2.536 2.536L6.95 10.95 2 6l4.95-4.95 1.414 1.414L5.828 5H13a8 8 0 1 1 0 16H4v-2h9a6 6 0 1 0 0-12H5.828z"
+              fill="rgba(94,94,94,1)" />
+          </svg></a>
       </div>
-    </form>
-  </body>
+    </div>
+
+    <div class="container w-50">
+
+      <table class="table table-hover table-sm">
+        <thead>
+          <td>Id</td>
+          <td>Nombre</td>
+          <td>Profesor</td>
+          <td>Creditos</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </thead>
+        {% for curso in curso_list %}
+        <tr>
+          <td>
+            <a href="/curso/{{curso.id}}">{{curso.id}}</a>
+          </td>
+          <td>{{curso.nombre}}</td>
+          <td>
+            {{curso.profesor}}
+          </td>
+          <td>{{curso.creditos}}</td>
+          <td>
+            <a class="" href="/curso/update/{{curso.id}}">Actualizar <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24" width="24" height="24">
+                <path fill="none" d="M0 0h24v24H0z" />
+                <path
+                  d="M6.414 16L16.556 5.858l-1.414-1.414L5 14.586V16h1.414zm.829 2H3v-4.243L14.435 2.322a1 1 0 0 1 1.414 0l2.829 2.829a1 1 0 0 1 0 1.414L7.243 18zM3 20h18v2H3v-2z"
+                  fill="rgba(72,72,72,1)" />
+              </svg></a>
+          </td>
+          <td>
+            <a class="" href="/curso/delete/{{curso.id}}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                width="24" height="24">
+                <path fill="none" d="M0 0h24v24H0z" />
+                <path
+                  d="M17 6h5v2h-2v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8H2V6h5V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3zm1 2H6v12h12V8zm-9 3h2v6H9v-6zm4 0h2v6h-2v-6zM9 4v2h6V4H9z"
+                  fill="rgba(72,72,72,1)" />
+              </svg></a>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </form>
+</body>
+
 </html>
