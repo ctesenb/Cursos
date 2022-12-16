@@ -29,3 +29,6 @@ Maintain the directory  structure to execute the code
  *uvicorn main:app --reload*
 ### To access  the application
  * http://localhost:8000 *
+### Renewal DB
+DATABASE_URL = "mysql+mysqlconnector://USER:PASS@HOST:PORT/DB"
+DB HOST 7 DAYS TRIAL = https://clients.cloudclusters.io/
